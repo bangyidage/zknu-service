@@ -1,5 +1,5 @@
 {
-  "name": "eggjs-master",
+  "name": "app-server-master",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -9,8 +9,14 @@
   "dependencies": {
     "egg": "^2.15.1",
     "egg-cors": "^2.2.3",
+    "egg-jwt": "^3.1.7",
     "egg-mysql": "^3.0.0",
-    "egg-scripts": "^2.11.0"
+    "egg-redis": "^2.4.0",
+    "egg-scripts": "^2.11.0",
+    "egg-sequelize": "^6.0.0",
+    "egg-view-nunjucks": "^2.3.0",
+    "moment": "^2.29.1",
+    "mysql2": "^2.2.5"
   },
   "devDependencies": {
     "autod": "^3.0.1",
@@ -25,8 +31,8 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-eggjs-master",
-    "stop": "egg-scripts stop --title=egg-server-eggjs-master",
+    "start": "egg-scripts start --daemon --title=egg-server-app-server-master",
+    "stop": "egg-scripts stop --title=egg-server-app-server-master",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
@@ -43,6 +49,6 @@
     "type": "git",
     "url": ""
   },
-  "author": "",
+  "author": "npb",
   "license": "MIT"
 }
