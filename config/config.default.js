@@ -21,21 +21,25 @@ module.exports = appInfo => {
   config.jwt = {
     secret: '123456',
   };
-
   // Mysql
-  config.sequelize = {
-    dialect: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    database: 'app',
-    username: 'root',
-    password: 'root',
-    define: {
-      // freezeTableName默认值为false，会自动在表名后加s
-      freezeTableName: true,
-      // timestamps默认值为true，会自动添加create_time和update_time
-      timestamps: false,
+  config.mysql = {
+    // 单数据库信息配置
+    client: {
+      // host
+      host: 'localhost',
+      // 端口号
+      port: '3306',
+      // 用户名
+      user: 'root',
+      // 密码
+      password: 'root',
+      // 数据库名
+      database: 'app',
     },
+    // 是否加载到 app 上，默认开启
+    app: true,
+    // 是否加载到 agent 上，默认关闭
+    agent: false,
   };
 
   // csrf 安全配置
@@ -50,8 +54,9 @@ module.exports = appInfo => {
   };
 
   config.cors = {
-    origin: '*',
+    origin: 'http://localhost:3000',
     allowMethods: 'GET, HEAD, PUT, POST, DELETE, PATCH',
+    credentials: true,
   };
   // add your user config here
   const userConfig = {
