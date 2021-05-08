@@ -12,15 +12,17 @@ class JwtService extends Service {
     const { ctx } = this;
     try {
       const decode = this.app.jwt.verify(userId, this.app.config.jwt.secret);
-      return decode;
-    } catch (error) {
-      console.log(error);
       return {
-        code: -100,
+        status: 97,
+        msg: decode
+      }
+    } catch (error) {
+
+      return {
+        status: -100,
         msg: '请重新登录'
       }
     }
-    return
   }
 }
 

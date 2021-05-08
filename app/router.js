@@ -7,7 +7,9 @@ const { Controller } = require("egg");
  */
 module.exports = app => {
   const { router, controller } = app;
-  router.get('/', controller.home.index);
   router.post('/slogin', controller.slogin.index);
   router.post('/user', controller.user.index);
-};
+  router.post('/upload', controller.upload.index);
+  router.post('/modifyPhone', controller.modifyphone.index);
+  router.get('/', controller.loadjob.index);
+}

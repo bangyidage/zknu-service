@@ -58,6 +58,15 @@ module.exports = appInfo => {
     allowMethods: 'GET, HEAD, PUT, POST, DELETE, PATCH',
     credentials: true,
   };
+  config.oss = {
+    client: {
+      region: 'xxxxx',
+      internal: true,
+      accessKeyId: 'xxxx',
+      accessKeySecret: 'xxx',
+      bucket: 'xxx'
+    }
+  };
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
@@ -67,4 +76,12 @@ module.exports = appInfo => {
     ...config,
     ...userConfig,
   };
+};
+exports.multipart = {
+  mode: 'file',
+  fileSize: '50mb', // 接收文件大小
+  whitelist: [  // 允许接收的文件类型
+    '.png',
+    '.jpg'
+  ],
 };

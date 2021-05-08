@@ -7,9 +7,17 @@ class UserController extends Controller {
   async index() {
     const { ctx } = this;
     const token = this.ctx.request.header.token;
-    let userId = await this.ctx.service.jwt.checkToken(token);
-
-    this.ctx.body = userId;
+    let result = await this.ctx.service.jwt.checkToken(token);
+    if (result.status === -100) {
+      this.ctx.body = result;
+      return
+    }
+    const { msg } = result
+    let data = await this.ctx.service.user.index(msg);
+    this.ctx.body = {
+      data,
+      status: 98
+    };
   }
 }
 
