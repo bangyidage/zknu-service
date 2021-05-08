@@ -11,5 +11,6 @@ module.exports = app => {
   router.post('/user', controller.user.index);
   router.post('/upload', controller.upload.index);
   router.post('/modifyPhone', controller.modifyphone.index);
-  router.get('/', controller.loadjob.index);
+  router.post('/', controller.loadjob.index);
+  router.post('/searchJobs', controller.loadjob.searchJobs);
 }
