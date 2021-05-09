@@ -13,4 +13,6 @@ module.exports = app => {
   router.post('/modifyPhone', controller.modifyphone.index);
   router.post('/', controller.loadjob.index);
   router.post('/searchJobs', controller.loadjob.searchJobs);
+  router.post('/joinJobs', controller.loadjob.joinJobs);
+  router.post('/currentJobs', controller.loadjob.currentJobs);
 }

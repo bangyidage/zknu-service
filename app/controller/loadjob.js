@@ -54,6 +54,33 @@ class LoadjobController extends Controller {
       teacherName
     }
   }
+  async joinJobs() {
+    const { ctx } = this;
+    let token = this.ctx.request.header.token;
+    let result = await this.ctx.service.jwt.checkToken(token);
+    const { status, msg } = result;
+    if (status === -100) {
+      this.ctx.body = result;
+      return
+    }
+    let jobId = this.ctx.request.body.jobId;
+
+    let res = await this.ctx.service.loadjob.joinJobs(jobId, msg);
+    this.ctx.body = res;
+  }
+  async currentJobs() {
+    const { ctx } = this;
+    let token = this.ctx.request.header.token;
+    let result = await this.ctx.service.jwt.checkToken(token);
+    const { status, msg } = result;
+    if (status === -100) {
+      this.ctx.body = result;
+      return
+    }
+    let data = await this.ctx.service.loadjob.currentJobs(msg);
+    this.ctx.body = data;
+
+  }
 }
 
 module.exports = LoadjobController;
